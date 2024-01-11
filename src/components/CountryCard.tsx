@@ -1,13 +1,29 @@
 import React from "react";
 
-const CountryCard = ({ flag, name, population, region, capital }) => {
+interface CountryCardProperties {
+  flag: string;
+  name: string;
+  population: number;
+  region: string;
+  capital?: string;
+}
+
+const CountryCard = ({
+  flag,
+  name,
+  population,
+  region,
+  capital,
+}: CountryCardProperties) => {
   return (
-    <div className="">
+    <div className="rounded-sm shadow-lg">
       <img src={flag} alt={name} />
-      <h5>{name}</h5>
-      <p>Population: {population}</p>
-      <p>Region: {region}</p>
-      <p>Captial: {capital}</p>
+      <div className="p-4">
+        <h5 className="font-bold">{name}</h5>
+        <p>Population: {population}</p>
+        <p>Region: {region}</p>
+        <p>Captial: {capital}</p>
+      </div>
     </div>
   );
 };

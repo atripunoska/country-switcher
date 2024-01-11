@@ -3,7 +3,7 @@ import React from "react";
 const Header = () => {
   return (
     <header className="flex justify-between">
-      <div>Where in the world?</div>
+      <h2 className="font-bold">Where in the world?</h2>
       <button>Dark mode</button>
     </header>
   );
