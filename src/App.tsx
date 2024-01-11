@@ -11,9 +11,9 @@ function App() {
   }
   return (
     <div className={darkTheme ? "dark" : ""}>
-      <div className="container mx-auto px-12 bg-slate-50 dark:bg-slate-700">
-        <Header handleDarkMode={handleDarkThemeSwitch} />
-        <div className="grid grid-cols-4 grid-flow-row gap-10">
+      <div className="container mx-auto  bg-slate-50 dark:bg-slate-700">
+        <Header handleDarkMode={handleDarkThemeSwitch} isDarkMode={darkTheme} />
+        <div className="grid grid-cols-4 grid-flow-row gap-10 px-12">
           {data.map((c) => {
             return (
               <CountryCard
