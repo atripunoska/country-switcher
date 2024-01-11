@@ -1,10 +1,10 @@
 import React from "react";
 
-const Header = () => {
+const Header = ({ handleDarkMode }) => {
   return (
-    <header className="flex justify-between">
-      <h2 className="font-bold">Where in the world?</h2>
-      <button>Dark mode</button>
+    <header className="flex justify-between dark:text-white">
+      <h2 className="font-bold ">Where in the world?</h2>
+      <button onClick={handleDarkMode}>Dark mode</button>
     </header>
   );
 };
