@@ -19,6 +19,11 @@ const Country = () => {
     languages,
     borders,
   } = country;
+
+  const borderCountries = borders.map((b) =>
+    countries.find((c) => c.alpha3Code === b)
+  );
+
   return (
     <div className="grid grid-cols-2 gap-5 p-16">
       <div>
@@ -39,7 +44,7 @@ const Country = () => {
         <div className="flex">
           <div className="col-1">
             <p>
-              <strong>Native name:</strong>
+              <strong className="font-semibold">Native name:</strong>
               {nativeName}
             </p>
             <p>
@@ -47,32 +52,32 @@ const Country = () => {
               {population}
             </p>
             <p>
-              <strong>Region:</strong>
+              <strong className="font-semibold">Region:</strong>
               {region}
             </p>
             <p>
-              <strong>Sub Region:</strong>
+              <strong className="font-semibold">Sub Region:</strong>
               {subregion}
             </p>
             <p>
-              <strong>Capital:</strong>
+              <strong className="font-semibold">Capital:</strong>
               {capital}
             </p>
           </div>
           <div className="col-1">
             <p>
-              <strong>Top Level Domain:</strong>
+              <strong className="font-semibold">Top Level Domain:</strong>
               {topLevelDomain}
             </p>
             <p>
-              <strong>Currencies:</strong>
+              <strong className="font-semibold">Currencies:</strong>
               {currencies.map((c) => (
                 <span key={c.name}>{c.name}</span>
               ))}
             </p>
 
             <p>
-              <strong>Languages:</strong>
+              <strong className="font-semibold">Languages:</strong>
               {languages.map((l) => (
                 <span key={l.name}>{l.name}</span>
               ))}
@@ -80,9 +85,15 @@ const Country = () => {
           </div>
         </div>
         <div>
-          Border countries:{" "}
-          {borders.map((b) => (
-            <span>{b},</span>
+          <strong className="font-semibold">Border countries:</strong>
+          {borderCountries.map((b) => (
+            <Link
+              to={`/country/${b.name}`}
+              key={b.name}
+              className="bg-stone-400 text-white rounded p-2 mr-2 text-sm"
+            >
+              {b.name}
+            </Link>
           ))}
         </div>
       </div>
