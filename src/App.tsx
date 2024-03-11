@@ -1,34 +1,15 @@
-import { useState } from "react";
-import CountryCard from "./components/CountryCard";
-import Header from "./components/Header";
-import data from "./data.json";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Home from "./pages/Home";
+import Country from "./pages/Country";
 
 function App() {
-  const [darkTheme, setDarkTheme] = useState(false);
-
-  function handleDarkThemeSwitch() {
-    setDarkTheme((theme) => !theme);
-  }
   return (
-    <div className={darkTheme ? "dark" : ""}>
-      <div className="container mx-auto  bg-slate-50 dark:bg-slate-700">
-        <Header handleDarkMode={handleDarkThemeSwitch} isDarkMode={darkTheme} />
-        <div className="grid grid-cols-4 grid-flow-row gap-10 px-12">
-          {data.map((c) => {
-            return (
-              <CountryCard
-                key={c.alpha3Code}
-                flag={c.flag}
-                name={c.name}
-                population={c.population}
-                region={c.region}
-                capital={c.capital}
-              />
-            );
-          })}
-        </div>
-      </div>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />}></Route>
+        <Route path="country/:countryName" element={<Country />}></Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 

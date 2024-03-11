@@ -17,7 +17,11 @@ const CountryCard = ({
 }: CountryCardProperties) => {
   return (
     <div className="rounded-sm shadow-lg dark:text-white">
-      <img src={flag} alt={name} />
+      <img
+        src={flag}
+        alt={name}
+        className="h-auto w-full object-cover aspect-video"
+      />
       <div className="p-4">
         <h5 className="font-bold">{name}</h5>
         <p>Population: {population}</p>
