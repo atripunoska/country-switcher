@@ -42,7 +42,7 @@ Users is be able to:
 
 ### Links
 
-- Solution URL: [https://atripunoska.github.io/country-switcher/](https://atripunoska.github.io/country-switcher/)
+- Solution URL: [https://country-switcher.netlify.app/](https://country-switcher.netlify.app/)
 
 ## My process
 
