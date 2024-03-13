@@ -11,7 +11,7 @@ const SharedLayout = () => {
   return (
     <>
       <div className={darkTheme ? "dark" : ""}>
-        <div className="container mx-auto  bg-slate-50 dark:bg-slate-700 h-full min-h-dvh">
+        <div className="container mx-auto  bg-slate-50 dark:bg-slate-700 h-full min-h-dvh pb-10">
           <Header
             handleDarkMode={handleDarkThemeSwitch}
             isDarkMode={darkTheme}

@@ -47,15 +47,15 @@ const Home = () => {
 
   return (
     <>
-      <div className="flex justify-between px-12 mb-7">
-        <div>
+      <div className="md:flex justify-between md:px-12 mb-7 px-5">
+        <div className="mb-3 md:mb-0">
           <label className="relative block">
             <span className="sr-only">Search</span>
-            <span className="absolute inset-y-0 left-0 flex items-center pl-2">
-              <svg className="h-5 w-5 fill-slate-800" viewBox="0 0 20 20"></svg>
+            <span className="absolute inset-y-0 left-0 flex items-center pl-2 text-slate-400">
+              <ion-icon name="search-outline"></ion-icon>
             </span>
             <input
-              className="placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
+              className="placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:slate-800 focus:ring-1 sm:text-sm dark:bg-slate-600 dark:text-white dark:border-slate-600"
               placeholder="Search for a country..."
               type="text"
               name="search"
@@ -65,7 +65,7 @@ const Home = () => {
         <select
           name="selectRegion"
           id=""
-          className="h-12 rounded-md border  border-slate-200	 bg-transparent py-0 pl-2 pr-7 text-gray-500 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm"
+          className="h-10 rounded-md border  border-slate-200	 bg-transparent py-0 pl-2 pr-7 text-gray-500 focus:ring-2 focus:ring-inset focus:slate-800 sm:text-sm dark:border-slate-600 dark:text-white dark:bg-slate-600"
           onChange={handleRegionChange}
         >
           {uniqueRegions.map((region: string) => {
@@ -78,7 +78,7 @@ const Home = () => {
         </select>
       </div>
 
-      <div className="grid grid-cols-4 grid-flow-row gap-10 px-12">
+      <div className="grid xs:grid-cols-1 sm:grid-cols-2 md:grid-cols-4 grid-flow-row gap-10 px-5 md:px-12">
         {filteredList.map((c) => {
           return (
             <Link to={`country/${c.name}`} key={Math.random() * 2}>

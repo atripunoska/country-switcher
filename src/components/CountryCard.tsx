@@ -16,7 +16,7 @@ const CountryCard = ({
   capital,
 }: CountryCardProperties) => {
   return (
-    <div className="rounded-sm shadow-lg dark:text-white">
+    <div className="rounded-sm shadow-lg dark:text-white dark:shadow-slate-800">
       <img
         src={flag}
         alt={name}
@@ -26,7 +26,7 @@ const CountryCard = ({
         <h5 className="font-bold">{name}</h5>
         <p>Population: {population}</p>
         <p>Region: {region}</p>
-        <p>Captial: {capital}</p>
+        {capital && <p>Captial: {capital}</p>}
       </div>
     </div>
   );
