@@ -1,9 +1,8 @@
 import { useState, useEffect, useMemo } from "react";
+import { Link } from "react-router-dom";
+import CountryCard from "../components/CountryCard";
 
 import data from "../data.json";
-
-import CountryCard from "../components/CountryCard";
-import { Link } from "react-router-dom";
 
 function removewithfilter(arr) {
   const outputArray = arr.filter(function (v, i, self) {
@@ -18,6 +17,7 @@ function removewithfilter(arr) {
 const Home = () => {
   const [countries, setCountries] = useState([{}]);
   const [selectedRegion, setSelectedRegion] = useState();
+  const [filter, setFilter] = useState("");
 
   const regions = data.map((c) => {
     return c?.region;
@@ -33,6 +33,7 @@ const Home = () => {
     if (!selectedRegion) {
       return countries;
     }
+
     return countries.filter((item) => item?.region === selectedRegion);
   }
 
@@ -59,15 +60,18 @@ const Home = () => {
               placeholder="Search for a country..."
               type="text"
               name="search"
+              value={filter}
+              onChange={(event) => setFilter(event.target.value)}
             />
           </label>
         </div>
         <select
           name="selectRegion"
-          id=""
+          id="selectRegion"
           className="h-10 rounded-md border  border-slate-200	 bg-transparent py-0 pl-2 pr-7 text-gray-500 focus:ring-2 focus:ring-inset focus:slate-800 sm:text-sm dark:border-slate-600 dark:text-white dark:bg-slate-600"
           onChange={handleRegionChange}
         >
+          <option value="">Select a region</option>
           {uniqueRegions.map((region: string) => {
             return (
               <option key={region} value={region}>
@@ -79,19 +83,27 @@ const Home = () => {
       </div>
 
       <div className="grid xs:grid-cols-1 sm:grid-cols-2 md:grid-cols-4 grid-flow-row gap-10 px-5 md:px-12">
-        {filteredList.map((c) => {
-          return (
-            <Link to={`country/${c.name}`} key={Math.random() * 2}>
-              <CountryCard
-                flag={c.flag}
-                name={c.name}
-                population={c.population}
-                region={c.region}
-                capital={c?.capital}
-              />
-            </Link>
-          );
-        })}
+        {filteredList
+          .filter(
+            (c) =>
+              c?.name
+                ?.toString()
+                .toLowerCase()
+                .includes(filter.toLowerCase()) || filter === ""
+          )
+          .map((c) => {
+            return (
+              <Link to={`country/${c.name}`} key={Math.random() * 2}>
+                <CountryCard
+                  flag={c.flag}
+                  name={c.name}
+                  population={c.population}
+                  region={c.region}
+                  capital={c?.capital}
+                />
+              </Link>
+            );
+          })}
       </div>
     </>
   );
