@@ -20,7 +20,7 @@ const CountryCard = ({
       <img
         src={flag}
         alt={name}
-        className="h-auto w-full object-cover aspect-video"
+        className="h-auto w-full object-contain aspect-video"
       />
       <div className="p-4">
         <h5 className="font-bold">{name}</h5>
