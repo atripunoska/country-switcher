@@ -10,8 +10,12 @@ const Header = ({ handleDarkMode, isDarkMode }: HeaderProperties) => {
         <h2 className="font-bold md:text-xl text-md">Where in the world?</h2>
         <button onClick={handleDarkMode} className="flex items-center">
           {isDarkMode ? (
-            <ion-icon name="moon"></ion-icon>
+            /* eslint-disable-next-line @typescript-eslint/ban-ts-comment*/
+            /* @ts-expect-error */
+            <ion-icon name="moon"> </ion-icon>
           ) : (
+            /* eslint-disable-next-line @typescript-eslint/ban-ts-comment*/
+            /* @ts-expect-error */
             <ion-icon name="moon-outline"></ion-icon>
           )}
           <span className="pl-2.5 md:text-md text-sm">Dark mode</span>

@@ -4,7 +4,23 @@ import countries from "../data.json";
 const Country = () => {
   const { countryName } = useParams();
 
-  const country = countries.find((c) => c?.name === countryName);
+  /* eslint-disable-next-line @typescript-eslint/ban-ts-comment*/
+  /* @ts-expect-error */
+  const country: {
+    flag: string;
+    name: string;
+    nativeName: string;
+    population: number;
+    region: string;
+    subregion: string;
+    topLevelDomain: string[];
+    languages: {
+      name: string;
+    }[];
+    capital?: string;
+    borders?: string[];
+    currencies?: Array<{ name: string }>;
+  } = countries.find((c) => c?.name === countryName);
 
   const {
     flag,
@@ -29,6 +45,8 @@ const Country = () => {
           to="/"
           className="bg-white font-light hover:bg-gray-100 drop-shadow-md px-6 py-2 text-sm dark:border-slate-700 dark:bg-slate-600 dark:text-white inline-flex justify-center items-center rounded hover:dark:bg-slate-800"
         >
+          {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment*/}
+          {/* @ts-expect-error */}
           <ion-icon name="arrow-back-outline"></ion-icon>
           <span className="ml-2">Back</span>
         </Link>
@@ -73,7 +91,9 @@ const Country = () => {
                 <strong className="font-semibold mr-1">
                   Top Level Domain:
                 </strong>
-                <span className="font-light">{topLevelDomain}</span>
+                <span className="font-light">
+                  {topLevelDomain.map((tld) => tld)}
+                </span>
               </div>
 
               {props?.currencies && (
@@ -107,11 +127,11 @@ const Country = () => {
                 </strong>
                 {borderCountries?.map((b) => (
                   <Link
-                    to={`/country/${b.name}`}
-                    key={b.name}
+                    to={`/country/${b?.name}`}
+                    key={b?.name}
                     className="bg-white font-light hover:bg-gray-100 drop-shadow-md px-4 py-2 text-sm dark:border-slate-700 dark:bg-slate-600 dark:text-white inline-flex justify-center items-center mb-3 rounded mr-2 text-sm hover:dark:bg-slate-800"
                   >
-                    {b.name}
+                    {b?.name}
                   </Link>
                 ))}
               </>

@@ -1,10 +1,8 @@
-import React from "react";
-
 interface CountryCardProperties {
-  flag: string;
-  name: string;
-  population: number;
-  region: string;
+  flag?: string;
+  name?: string;
+  population?: number;
+  region?: string;
   capital?: string;
 }
 
