@@ -17,7 +17,7 @@ This is a solution to the [REST Countries API with color theme switcher challeng
 
 ### The challenge
 
-Users is be able to:
+Users are able to:
 
 - See all countries from the API on the homepage
 - Search for a country using an `input` field
